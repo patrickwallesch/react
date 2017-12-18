@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from '../components/LoginForm';
+import { PatientLoginForm } from '../components/PatientLoginForm';
 
 class App extends React.Component
 {
@@ -8,7 +8,7 @@ class App extends React.Component
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <LoginForm/>
+                        <PatientLoginForm/>
                     </div>
                     <div className="col-md-6">
                     </div>
