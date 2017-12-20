@@ -59,12 +59,12 @@ class PatientLoginForm extends React.Component
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state)
+{
     const { loggingIn } = state.authentication;
-    return {
-        loggingIn
-    };
+
+    return { loggingIn };
 }
 
-const connectedLoginPage = connect(mapStateToProps)(PatientLoginForm);
-export { connectedLoginPage as PatientLoginForm };
+const connectedPatientLoginForm = connect(mapStateToProps)(PatientLoginForm);
+export { connectedPatientLoginForm as PatientLoginForm };

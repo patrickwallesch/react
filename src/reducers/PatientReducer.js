@@ -8,10 +8,6 @@ export function authentication(state = {}, action)
     {
         case PatientConstants.PATIENT_LOGIN_REQUEST:
 
-            return {
-                loggingIn: true,
-            };
-
             Request
                 .post('http://api.feelae.dev/oauth/v2/token')
                 .set('Content-Type', 'application/x-www-form-urlencoded')
