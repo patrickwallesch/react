@@ -16,7 +16,7 @@ class RestClient
      */
     send(method = 'GET', path, body = null)
     {
-        let url = this.scheme + '//' + path;
+        let url = this.scheme + '://' + this.hostname + path;
 
         return new Promise((resolve, reject) =>
         {
@@ -25,7 +25,7 @@ class RestClient
                 .send(body)
                 .end((err, res) =>
                 {
-                    if(!res.ok) {
+                    if(err || !res.ok) {
                         reject(res);
                     }
 
@@ -35,4 +35,9 @@ class RestClient
     }
 }
 
-export default (new RestClient());
+export const
+    api = (new RestClient()),
+    methods = {
+        HTTP_POST: 'POST',
+        HTTP_GET: 'GET',
+    };

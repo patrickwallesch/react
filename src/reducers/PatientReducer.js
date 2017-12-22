@@ -1,39 +1,27 @@
-import { PatientConstants } from '../constants/PatientConstants';
-import RestClient from "../client/RestClient";
-import Request from "superagent";
+import * as actions from 'patient/action_types';
 
-export function authentication(state = {}, action)
+const initialState = {
+    loggedIn: false,
+    submitted: false,
+};
+
+export function patientReducer(state = initialState, action)
 {
     switch (action.type)
     {
-        case PatientConstants.PATIENT_LOGIN_REQUEST:
+        case actions.PATIENT_LOGIN_FORM_SUBMITTED:
 
-            Request
-                .post('http://api.feelae.dev/oauth/v2/token')
-                .set('Content-Type', 'application/x-www-form-urlencoded')
-                .send({
-                    grant_type: "password",
-                    client_id: "1_29kg64ag3skkccsgc0cs4g4k8s8koskkkg0g8o8woksc8o8gs0",
-                    client_secret: "20s83tlb5jgkoc8w044occowcc4s4occcc844kkggccw0kc848",
-                    username: "patrick@v-labs.fr",
-                    password: "testTest1@",
-                    scope: "patient"
-                })
-                .end((err, res) => {
-                    if(!res.ok) {
-                        return {
-                            ...state,
-                            loggedIn: false
-                        };
-                    }
+            return {
+                ...state,
+                submitted: true
+            };
 
-                    console.log(state);
+        case actions.PATIENT_LOGIN_FAILED:
 
-                    return {
-                        ...state,
-                        loggedIn: JSON.parse(res.text).accessToken
-                    };
-                });
+            return {
+                ...state,
+                submitted: true
+            };
 
         default:
             return state

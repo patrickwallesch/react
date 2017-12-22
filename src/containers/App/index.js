@@ -1,7 +1,7 @@
 import React from 'react';
-import { PatientLoginForm } from 'patient/forms/PatientLoginForm';
+import PatientLoginForm from 'patient/forms/PatientLoginForm';
 
-class Homepage extends React.Component
+export default class App extends React.Component
 {
     render() {
         return (
@@ -19,5 +19,3 @@ class Homepage extends React.Component
         );
     }
 }
-
-export default Homepage;

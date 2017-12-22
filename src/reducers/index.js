@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { authentication } from './PatientReducer';
+import { patientReducer } from './PatientReducer';
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
-    authentication,
+    form: formReducer,
+    patientReducer,
 });
 
 export default rootReducer;
