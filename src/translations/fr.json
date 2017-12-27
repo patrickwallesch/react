@@ -1,0 +1,37 @@
+{
+    "brand": "Feelae",
+    "homepage": {
+        "title": "Interface web Patients",
+        "description": "Dialoguer avec un médecin, éditer son profil, ajouter des moyens de paiement ..."
+    },
+    "patient": {
+        "forms": {
+            "email": "Addresse e-mail",
+            "password": "Mot de passe",
+            "firstname": "Prénom",
+            "lastname": "Nom",
+            "mobile": "Téléphone mobile",
+            "birthdate": "Date de naissance",
+            "login": {
+                "title": "Se connecter",
+                "description": "Indiquez votre email et votre mot de passe pour vous connecter",
+                "submit": "Connexion"
+            },
+            "registration": {
+                "title": "S'inscrire",
+                "description": "Renseignez les champs ci-dessous pour créer un compte",
+                "submit": "Valider"
+            }
+        }
+    },
+    "validation": {
+        "patient": {
+            "email" : {
+                "required": "Veuillez saisir un email"
+            },
+            "password" : {
+                "required": "Veuillez saisir un mot de passe"
+            }
+        }
+    }
+}

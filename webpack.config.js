@@ -1,60 +1,59 @@
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const BUILD_DIR = path.resolve(__dirname, './public');
+const APP_DIR = path.resolve(__dirname, './src');
 
-let path = require('path');
-
-let BUILD_DIR = path.resolve(__dirname, './public');
-let APP_DIR = path.resolve(__dirname, './src');
-
-const Dotenv = require('dotenv-webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: './public/index.html',
-    filename: 'index.html',
-    inject: 'body'
-});
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // copy static assets
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // inject js in DOM
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); // css/sass
 
 module.exports = {
     entry: [
         APP_DIR + '/index.js',
-        './src/theme/scss/main.scss'
+        './src/theme/scss/main.scss',
+        './node_modules/font-awesome/css/font-awesome.min.css',
     ],
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     devtool: 'source-map',
     module: {
         loaders: [
             {
                 test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
-                loader: 'file?name=img/[name].[ext]'
+                loader: 'file-loader?name=img/[name].[ext]'
             },
             {
-                test: /\.(sass|scss)$/,
+                test: /\.(css|sass|scss)$/,
                 loader: ExtractTextPlugin.extract(['css-loader','sass-loader'])
             },
             {
                 test: /\.(eot|ttf|woff|woff2)(\?.*$|$)$/,
-                loader: 'file?name=fonts/[name].[ext]'
+                loader: 'file-loader?name=fonts/[name].[ext]'
             },
             {
                 test : /\.(jsx|js)/,
                 include : APP_DIR,
                 loader : 'babel-loader'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin('bundle.css'),
-        new Dotenv({
-            path: './.env', // Path to .env file (this is the default)
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            filename: 'index.html',
+            inject: 'body'
         }),
-        HtmlWebpackPluginConfig
-    ],
-    resolve: {
-        modules: [path.resolve(__dirname, '/src'), 'node_modules/'],
-        descriptionFiles: ['package.json'],
-        extensions : ['.js', '.jsx']
-    }
+        new CopyWebpackPlugin([
+            {
+                from: 'src/theme/img',
+                to: BUILD_DIR + '/img'
+            }
+        ]),
+    ]
 };

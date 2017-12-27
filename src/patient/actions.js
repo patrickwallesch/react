@@ -2,11 +2,6 @@ import { api, methods } from "../client/RestClient";
 import * as actions from './action_types';
 import { SubmissionError } from 'redux-form';
 
-const patientLoginFailedAction = () => ({
-    type: actions.PATIENT_LOGIN_FAILED
-});
-
-// dispatch injected via redux-thunk
 function submitPatientLoginFormAction(values, dispatch)
 {
     dispatch({
@@ -21,14 +16,26 @@ function submitPatientLoginFormAction(values, dispatch)
         client_secret: "20s83tlb5jgkoc8w044occowcc4s4occcc844kkggccw0kc848",
         scope: "patient"
     })
+    .then(() => {
+
+    })
+    .catch((error) => {
+        throw new SubmissionError({_error: error.body.error_description});
+    });
+}
+
+function submitPatientRegistrationFormAction(values, dispatch)
+{
+    return api.send(methods.HTTP_POST, '/patients', {values})
         .then(() => {
 
         })
         .catch((error) => {
             throw new SubmissionError({_error: error.body.error_description});
         });
-};
+}
 
 export const patientActions = {
-    submitPatientLoginFormAction
+    submitPatientLoginFormAction,
+    submitPatientRegistrationFormAction
 };

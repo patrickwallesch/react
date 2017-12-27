@@ -5,7 +5,7 @@ const initialState = {
     submitted: false,
 };
 
-export function patientReducer(state = initialState, action)
+export function patientLoginReducer(state = initialState, action)
 {
     switch (action.type)
     {

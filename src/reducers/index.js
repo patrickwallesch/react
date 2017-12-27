@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import { patientReducer } from './PatientReducer';
-import { reducer as formReducer } from 'redux-form'
+import { patientLoginReducer } from './PatientLoginReducer';
+import { patientRegistrationReducer } from './PatientRegistrationReducer';
+import { reducer as formReducer } from 'redux-form';
+import { localeReducer as locale } from 'react-localize-redux';
 
 const rootReducer = combineReducers({
     form: formReducer,
-    patientReducer,
+    patientLoginReducer,
+    patientRegistrationReducer,
+    locale
 });
 
 export default rootReducer;
