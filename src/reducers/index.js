@@ -5,10 +5,10 @@ import { reducer as formReducer } from 'redux-form';
 import { localeReducer as locale } from 'react-localize-redux';
 
 const rootReducer = combineReducers({
-    form: formReducer,
     patientLoginReducer,
     patientRegistrationReducer,
-    locale
+    locale,
+    form: formReducer,
 });
 
 export default rootReducer;

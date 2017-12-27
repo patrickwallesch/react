@@ -1,6 +1,6 @@
 import React from 'react';
-import PatientLoginForm from '../../patient/forms/PatientLoginForm';
-import PatientRegistrationForm from '../../patient/forms/PatientRegistrationForm';
+import PatientLoginForm from '../../patient/login/PatientLoginForm';
+import PatientRegistrationForm from '../../patient/register/PatientRegistrationForm';
 import { localize } from 'react-localize-redux';
 
 class App extends React.Component

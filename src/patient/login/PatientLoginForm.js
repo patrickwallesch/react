@@ -1,15 +1,18 @@
 import React from 'react';
-import { patientActions } from '../actions';
+import * as actions from './actions';
 import { Field, reduxForm } from 'redux-form';
 import FormRow from '../../components/FormRow';
 import { localize } from 'react-localize-redux';
+import { bindActionCreators } from 'redux'
 
 const PatientLoginForm = props =>
 {
-    const { error, handleSubmit, submitting, translate } = props;
+    const { error, handleSubmit, submitting, translate, dispatch, values } = props;
+
+    //bindActionCreators(actions.login, dispatch);
 
     return (
-        <form onSubmit={handleSubmit(patientActions.submitPatientLoginFormAction)}>
+        <form onSubmit={handleSubmit(actions.login(values))}>
 
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
 
@@ -34,7 +37,7 @@ const PatientLoginForm = props =>
     );
 };
 
+
 export default localize(reduxForm({
     form: 'patient_login_form',
-    enableReinitialize: true,
 })(PatientLoginForm), 'locale')

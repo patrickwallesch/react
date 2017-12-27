@@ -1,5 +1,5 @@
 import React from 'react';
-import { patientActions } from '../actions';
+import * as actions from './actions';
 import { Field, reduxForm } from 'redux-form';
 import FormRow from '../../components/FormRow';
 import { localize } from 'react-localize-redux';
@@ -11,7 +11,7 @@ const PatientRegistrationForm = props =>
 
     return (
 
-        <form onSubmit={handleSubmit(patientActions.submitPatientRegistrationFormAction())}>
+        <form onSubmit={handleSubmit(actions.register)}>
 
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
 
@@ -63,5 +63,4 @@ const PatientRegistrationForm = props =>
 export default localize(reduxForm({
     form: 'patient_registration_form',
     validate,
-    enableReinitialize: true,
 })(PatientRegistrationForm), 'locale')

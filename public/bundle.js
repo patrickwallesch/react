@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./public";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 120);
@@ -36590,10 +36590,10 @@ var _reduxForm = __webpack_require__(24);
 var _reactLocalizeRedux = __webpack_require__(20);
 
 var rootReducer = (0, _redux.combineReducers)({
-    form: _reduxForm.reducer,
     patientLoginReducer: _PatientLoginReducer.patientLoginReducer,
     patientRegistrationReducer: _PatientRegistrationReducer.patientRegistrationReducer,
-    locale: _reactLocalizeRedux.localeReducer
+    locale: _reactLocalizeRedux.localeReducer,
+    form: _reduxForm.reducer
 });
 
 exports.default = rootReducer;
