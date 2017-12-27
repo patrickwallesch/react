@@ -1,5 +1,5 @@
-import { api, methods } from "client/RestClient";
-import * as actions from 'patient/action_types';
+import { api, methods } from "../client/RestClient";
+import * as actions from './action_types';
 import { SubmissionError } from 'redux-form';
 
 const patientLoginFailedAction = () => ({

@@ -1,5 +1,5 @@
 import React from 'react';
-import PatientLoginForm from 'patient/forms/PatientLoginForm';
+import PatientLoginForm from '../../patient/forms/PatientLoginForm';
 
 export default class App extends React.Component
 {

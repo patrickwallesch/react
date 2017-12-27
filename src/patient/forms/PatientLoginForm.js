@@ -1,7 +1,7 @@
 import React from 'react';
-import { patientActions } from 'patient/actions';
+import { patientActions } from '../actions';
 import { Field, reduxForm } from 'redux-form';
-import FormRow from 'components/FormRow';
+import FormRow from '../../components/FormRow';
 
 const PatientLoginForm = props =>
 {

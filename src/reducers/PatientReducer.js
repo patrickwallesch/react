@@ -1,4 +1,4 @@
-import * as actions from 'patient/action_types';
+import * as actions from '../patient/action_types';
 
 const initialState = {
     loggedIn: false,

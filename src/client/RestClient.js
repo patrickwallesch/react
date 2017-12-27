@@ -4,7 +4,7 @@ class RestClient
 {
     constructor()
     {
-        this.hostname = 'api.feelae.dev';
+        this.hostname = 'dev.api.feelae.v-labs.fr';
         this.scheme = 'http';
     }
 
